@@ -69,6 +69,8 @@ def wait_for_status(show_client, id, status_key, status,
                 name=show_client.__name__, status=status))
             return object_details
         elif object_details[status_key] == 'ERROR' and not error_ok:
+            LOG.info('Current record in object_details[status_key] {status}'.format(status=object_details[status_key]))
+            LOG.info('Full object_details {object}'.format(object=object_details))
             message = ('{name} {field} updated to an invalid state of '
                        'ERROR'.format(name=show_client.__name__,
                                       field=status_key))
